@@ -9,6 +9,8 @@ import com.compressor.listeners.UploadButtonListener;
 
 public class UploadPanel extends JPanel {
 	
+	private static final long serialVersionUID = 1L;
+	
 	private JButton uploadBtn = new JButton("Open");
 	private JLabel uploadLabel = new JLabel("Filename");
 
