@@ -7,8 +7,8 @@ import com.compressor.frames.MainFrame;
 
 public class App {
 	
-	private final static int frameWidth = 400;
-	private final static int frameHeight = 300;
+	private final static int frameWidth = 650;
+	private final static int frameHeight = 480;
 	private final static String headerTitle = "Image compressor desktop app"; 
 	
 	public static void main(String[] args) {
