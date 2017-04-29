@@ -16,6 +16,7 @@ public class App {
 			public void run() {
 				MainFrame frame = new MainFrame(headerTitle);
 				frame.setSize(frameWidth, frameHeight);
+				frame.setResizable(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
 			}

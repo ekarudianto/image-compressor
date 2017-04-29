@@ -3,12 +3,14 @@ package com.compressor.panels;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import com.compressor.listeners.CompressBtnListener;
 import com.compressor.listeners.SelectBtnListener;
 import javax.swing.JSpinner;
 import java.awt.TextArea;
+import javax.swing.JTextPane;
 
 public class UploadPanel extends JPanel {
 	
@@ -20,13 +22,18 @@ public class UploadPanel extends JPanel {
 	private final JLabel compressionSizeLabel = new JLabel("Compression size (%)");
 	private final JSpinner compressionSpinner = new JSpinner();
 	private final TextArea textLogger = new TextArea();
+	private final JFileChooser chooser = new JFileChooser();
 
 	/**
-	 * Create the panel.
+	 * Constructor of upload panel.
+	 * It will create the panel and it's sub components
 	 */
 	public UploadPanel() {
 		
-		selectBtn.addActionListener(new SelectBtnListener(selectBtn, compressBtn, uploadLabel, textLogger));
+		selectBtn.addActionListener(new SelectBtnListener(
+			selectBtn, compressBtn, uploadLabel, textLogger, chooser
+		));
+		
 		selectBtn.setToolTipText("Open file");
 		selectBtn.setBounds(10, 10, 100, 30);
 		add(selectBtn);
@@ -44,8 +51,7 @@ public class UploadPanel extends JPanel {
 	    tf.setBackground(Color.WHITE);
 
 	    compressionSpinner.setBounds(190, 60, 50, 30);
-	    // Set default value
-	    compressionSpinner.setValue(new Integer(50));;
+	    compressionSpinner.setValue(new Integer(50)); // Set default value
 		add(compressionSpinner);
 		
 		textLogger.setEditable(false);
@@ -53,7 +59,7 @@ public class UploadPanel extends JPanel {
 		textLogger.setBackground(Color.WHITE);
 		add(textLogger);
 		
-		compressBtn.addActionListener(new CompressBtnListener());
+		compressBtn.addActionListener(new CompressBtnListener(compressBtn, textLogger, chooser, compressionSpinner));
 		compressBtn.setToolTipText("Compress");
 		compressBtn.setBounds(10, 420, 140, 30);
 		compressBtn.setEnabled(false);
