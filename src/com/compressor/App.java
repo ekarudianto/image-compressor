@@ -7,15 +7,26 @@ import com.compressor.frames.MainFrame;
 
 public class App {
 	
-	private final static int frameWidth = 650;
-	private final static int frameHeight = 480;
-	private final static String headerTitle = "Image compressor desktop app"; 
+	/**
+	 * Header title of the desktop app 
+	 */
+	private final static String APP_TITLE = "Image compressor desktop app";
+	
+	/**
+	 * Frame height default size (px)
+	 */
+	private final static int FRAME_HEIGHT = 480;
+	
+	/**
+	 * Frame width default size (px)
+	 */
+	private final static int FRAME_WIDTH = 650; 
 	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				MainFrame frame = new MainFrame(headerTitle);
-				frame.setSize(frameWidth, frameHeight);
+				MainFrame frame = new MainFrame(APP_TITLE);
+				frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
 				frame.setResizable(false);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);

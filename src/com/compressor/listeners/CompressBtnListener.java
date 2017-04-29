@@ -16,10 +16,10 @@ import javax.swing.JSpinner;
 
 public class CompressBtnListener implements ActionListener {
 	
-	private TextArea textLogger;
 	private JFileChooser chooser;
 	private JButton compressBtn;
 	private JSpinner compressionSpinner;
+	private TextArea textLogger;
 	
 	/**
 	 * Constructor of compress button listener

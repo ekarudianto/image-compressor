@@ -16,13 +16,13 @@ public class UploadPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private final JButton selectBtn = new JButton("Open");
+	private final JFileChooser chooser = new JFileChooser();
 	private final JButton compressBtn = new JButton("Compress");
-	private final JLabel uploadLabel = new JLabel("Filename");
 	private final JLabel compressionSizeLabel = new JLabel("Compression size (%)");
 	private final JSpinner compressionSpinner = new JSpinner();
+	private final JButton selectBtn = new JButton("Open");
 	private final TextArea textLogger = new TextArea();
-	private final JFileChooser chooser = new JFileChooser();
+	private final JLabel uploadLabel = new JLabel("Filename");
 
 	/**
 	 * Constructor of upload panel.

@@ -12,12 +12,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class SelectBtnListener implements ActionListener {
 	
-	private JLabel uploadLabel;
-	private JButton selectBtn;
-	private JButton compressBtn;
-	private TextArea textLogger;
 	private JFileChooser chooser;
+	private JButton compressBtn;
 	private boolean isCompressBtnEnabled = false;
+	private JButton selectBtn;
+	private TextArea textLogger;
+	private JLabel uploadLabel;
 	
 	/**
 	 * Constructor of select button action listener
