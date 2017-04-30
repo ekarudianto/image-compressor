@@ -1,9 +1,8 @@
 package com.compressor;
 
+import com.compressor.frames.MainFrame;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
-
-import com.compressor.frames.MainFrame;
 
 public class App {
 	

@@ -10,7 +10,6 @@ import com.compressor.listeners.CompressBtnListener;
 import com.compressor.listeners.SelectBtnListener;
 import javax.swing.JSpinner;
 import java.awt.TextArea;
-import javax.swing.JTextPane;
 
 public class UploadPanel extends JPanel {
 	
