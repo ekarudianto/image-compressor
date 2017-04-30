@@ -26,8 +26,8 @@ public class CompressBtnListener implements ActionListener {
 	private JButton compressBtn;
 	private JSpinner compressionSpinner;
 	private TextArea textLogger;
-	
-	private static final String DATE_TIME_FORMATTER = "yyyy-MM-dd HH-mm-ss";
+
+	private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH-mm-ss";
 
 	/**
 	 * Constructor of compress button listener
@@ -81,7 +81,7 @@ public class CompressBtnListener implements ActionListener {
 
 		// Read original image into a BufferedImage object
 		BufferedImage inputImage = ImageIO.read(new File(img.getSelectedFile().toString()));
-		
+
 		// Get image type
 		String imgName = img.getSelectedFile().getName();
 		String imgType = imgName.substring(imgName.lastIndexOf(".") + 1, imgName.length());
@@ -117,18 +117,18 @@ public class CompressBtnListener implements ActionListener {
 		 *  
 		 *  {path}/{imgName}{dateTime}.{imgType}
 		 */
-		
+
 		// extract output path
 		String p = img.getSelectedFile().getPath();
 		String imgPath = p.substring(0, p.lastIndexOf("/") + 1);
-		
+
 		// extract image name without the file extension
 		String outputName = imgName.substring(0, imgName.lastIndexOf(".")); 
 
 		// get today date time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMATTER);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMAT);
 		String now = LocalDateTime.now().format(formatter);
-		
+
 		String output = imgPath + outputName + " " + now + "." + imgType;
 		File fileOut = new File(output);
 		FileImageOutputStream outputImage = new FileImageOutputStream(fileOut);
