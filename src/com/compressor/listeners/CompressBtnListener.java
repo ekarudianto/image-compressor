@@ -96,8 +96,15 @@ public class CompressBtnListener implements ActionListener {
 		writer = (ImageWriter) iter.next();
 
 		ImageWriteParam iwp = writer.getDefaultWriteParam();
-		iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT) ;
-		iwp.setCompressionQuality(qualitySize);
+
+		try {
+			iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT) ;
+			iwp.setCompressionQuality(qualitySize);
+		} catch (UnsupportedOperationException e) {
+			textLogger.append("Error compressing file : compressing for type " + imgType + " is not supported \n");
+			e.printStackTrace();
+			return;
+		}
 
 		/**
 		 * These steps are required to generate file path and file name :
@@ -122,7 +129,8 @@ public class CompressBtnListener implements ActionListener {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_TIME_FORMATTER);
 		String now = LocalDateTime.now().format(formatter);
 		
-		File fileOut = new File(imgPath + outputName + " " + now + "." + imgType);
+		String output = imgPath + outputName + " " + now + "." + imgType;
+		File fileOut = new File(output);
 		FileImageOutputStream outputImage = new FileImageOutputStream(fileOut);
 
 		// Create an IIOImage object containing an 
@@ -133,6 +141,7 @@ public class CompressBtnListener implements ActionListener {
 		writer.write(null, iioiImage, iwp);
 		writer.dispose();
 
-		textLogger.append("Compression successful!");
+		textLogger.append(output + " is created \n");
+		textLogger.append("Compression successful! \n\n");
 	}
 }
