@@ -54,7 +54,7 @@ public class CompressBtnListener implements ActionListener {
 			float compressionSize = (float) (n / 100.0);
 
 			textLogger.append("Compressing file : " + fileName + "\n");
-			textLogger.append("Original file size : " + chooser.getSelectedFile().length() + "\n");
+			textLogger.append("Original file size : " + this.getPrettifyFileSize(chooser.getSelectedFile().length()) + "\n");
 			textLogger.append("Compression size : " + compressionSpinner.getValue() + "% \n");
 			textLogger.append("\n");
 			textLogger.append("=======================================\n");
@@ -67,6 +67,19 @@ public class CompressBtnListener implements ActionListener {
 				ex.printStackTrace();
 			}
 		}
+	}
+	
+	/**
+	 * Get a prettify file size from raw file size
+	 * https://stackoverflow.com/questions/3758606/how-to-convert-byte-size-into-human-readable-format-in-java
+	 * 
+	 * @param rawFileSize
+	 * @return sizes in string
+	 */
+	private String getPrettifyFileSize(long rawFileSize) {
+		if (rawFileSize < 1024) return rawFileSize + " B";
+	    int z = (63 - Long.numberOfLeadingZeros(rawFileSize)) / 10;
+	    return String.format("%.1f %sB", (double)rawFileSize / (1L << (z*10)), " KMGTPE".charAt(z));
 	}
 
 	/**
